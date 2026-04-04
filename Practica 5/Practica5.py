@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Lectura de datos
-data = pd.read_csv("videogamesales/videogamesales_clean.csv")
+data = pd.read_csv("Practica 1/videogamesales/videogamesales_clean.csv")
 
 
 def regression_ventas_anio(data: pd.DataFrame) -> None: 
