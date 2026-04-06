@@ -47,6 +47,12 @@ def entrenar_y_evaluar_knn(X_train, X_test, y_train, y_test):
 def main():
     # Lectura de datos
     data = pd.read_csv("Practica 1/videogamesales/videogamesales_clean.csv")
+
+    # 🔧 AGREGADO (solución al error)
+    data['Year'] = pd.to_datetime(data['Year'], errors='coerce')
+    data['Year'] = data['Year'].dt.year
+    data = data.dropna(subset=['Year'])
+
     data = codificar_categorias(data)
     data = crear_variable_objetivo(data)
     

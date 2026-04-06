@@ -9,6 +9,11 @@ import seaborn as sns
 # Lectura de datos
 data = pd.read_csv("Practica 1/videogamesales/videogamesales_clean.csv")
 
+# 🔧 AGREGADO (solución al error)
+data['Year'] = pd.to_datetime(data['Year'], errors='coerce')
+data['Year'] = data['Year'].dt.year
+data = data.dropna(subset=['Year'])
+
 
 def regression_ventas_anio(data: pd.DataFrame) -> None: 
     """Ventas por a través de los años"""
@@ -58,8 +63,6 @@ def regression_ventas_anio(data: pd.DataFrame) -> None:
     plt.ylabel('Ventas Globales Totales (millones)')
     plt.grid(True)
     plt.show()
-    
-    
     
     
 def regression_EU_NA(data: pd.DataFrame) -> None: 
